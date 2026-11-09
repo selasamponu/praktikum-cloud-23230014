@@ -1,1 +1,27 @@
-
+root@ubuntu:~$ history > /root/riwayat-A.txt
+root@ubuntu:~$ cat /root/riwayat-A.txt
+    1  ls /etc | head -20
+    2  ls -l /var/log
+    3  tail -5 /etc/passwd
+    4  ls -ld /home /root /tmp
+    5  useradd -m -s /bin/bash mhs23230014
+    6  echo "mhs23230014:Cloud2026" | chpasswd
+    7  usermod -aG sudo mhs23230014
+    8  id mhs23230014
+    9  ls -ld /home/mhs23230014
+   10  su - mhs23230014
+   11  mkdir -p /srv/data
+   12  echo "Catatan rahasia NIM 23230014" > /srv/data/catatan.txt
+   13  chown mhs23230014:mhs23230014 /srv/data/catatan.txt
+   14  chmod 600 /srv/data/catatan.txt
+   15  ls -l /srv/data
+   16  useradd -m tamu
+   17  su - tamu -c "cat /srv/data/catatan.txt"
+   18  su - mhs23230014 -c "cat /srv/data/catatan.txt"
+   19  sleep 600 &
+   20  ps aux | grep sleep
+   21  kill 1234
+   22  kill 24887
+   23  ps aux | grep sleep
+   24  top
+   25  history > /root/riwayat-A.txt
