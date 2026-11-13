@@ -1,3 +1,4 @@
+root@ubuntu:~$ history > /root/riwayat-B.txt
 root@ubuntu:~$ cat /etc/nginx/sites-available/https-lab /root/riwayat-B.txt
 server {
 listen 443 ssl;
@@ -7,18 +8,47 @@ ssl_certificate_key /etc/nginx/ssl/lab.key;
 root /var/www/html;
 index index.html index.nginx-debian.html;
 }
-    1  ssh -o StrictHostKeyChecking=accept-new mhs23230014@localhost "whoami; hostname; echo Login dengan kunci berhasil - NIM 23230014"
-    2  chmod 644 /root/.ssh/id_ed25519
-    3  ssh -o BatchMode=yes mhs23230014@localhost whoami
-    4  chmod 600 /root/.ssh/id_ed25519
-    5  ssh -o BatchMode=yes mhs23230014@localhost whoami
-    6  history > /root/riwayat-A.txt
-    7  cat /root/riwayat-A.txt
-    8  mkdir -p /etc/nginx/ssl
-    9  openssl req -x509 -nodes -days 30 -newkey rsa:2048 -keyout /etc/nginx/ssl/lab.key -out /etc/nginx/ssl/lab.crt -subj "/CN=lab-23230014.local/O=UNRIYO"
-   10  chmod 600 /etc/nginx/ssl/lab.key
-   11  openssl x509 -in /etc/nginx/ssl/lab.crt -noout -subject -issuer -dates
-   12  cat > /etc/nginx/sites-available/https-lab <<'EOF'
+    1  hostname
+    2  ip a
+    3  ip route
+    4  cat /etc/resolv.conf
+    5  ping -c 4 8.8.8.8
+    6  curl -I https://example.com
+    7  apt update
+    8  apt install -y dnsutils
+    9  dig example.com +short
+   10  dig unriyo.ac.id +short
+   11  ss -tulpn
+   12  apt install -y nginx
+   13  ss -tulpn | grep nginx
+   14  curl -I localhost
+   15  apt install -y openssh-server
+   16  systemctl start ssh
+   17  useradd -m -s /bin/bash mhs23230014
+   18  mkdir -p /root/.ssh && chmod 700 /root/.ssh
+   19  ssh-keygen -t ed25519 -f /root/.ssh/id_ed25519 -N "" -C "kunci-23230014"
+   20  mkdir -p /home/mhs23230014/.ssh
+   21  cat /root/.ssh/id_ed25519.pub >> /home/mhs23230014/.ssh/authorized_keys
+   22  chown -R mhs23230014:mhs23230014 /home/mhs23230014/.ssh
+   23  chmod 700 /home/mhs23230014/.ssh
+   24  chmod 600 /home/mhs23230014/.ssh/authorized_keys
+   25  mkdir -p /etc/ssh/sshd_config.d/
+   26  echo "PubkeyAuthentication yes" > /etc/ssh/sshd_config.d/99-custom.conf
+   27  echo "PasswordAuthentication no" >> /etc/ssh/sshd_config.d/99-custom.conf
+   28  rm -f /etc/ssh/sshd_config.d/50-cloud-init.conf
+   29  systemctl restart ssh
+   30  ssh -o StrictHostKeyChecking=accept-new mhs23230014@localhost "whoami; hostname; echo Login dengan kunci berhasil - NIM 23230014"
+   31  chmod 644 /root/.ssh/id_ed25519
+   32  ssh -o BatchMode=yes mhs23230014@localhost whoami
+   33  chmod 600 /root/.ssh/id_ed25519
+   34  ssh -o BatchMode=yes mhs23230014@localhost whoami
+   35  history > /root/riwayat-A.txt
+   36  cat /root/riwayat-A.txt
+   37  mkdir -p /etc/nginx/ssl
+   38  openssl req -x509 -nodes -days 30 -newkey rsa:2048 -keyout /etc/nginx/ssl/lab.key -out /etc/nginx/ssl/lab.crt -subj "/CN=lab-23230014.local/O=UNRIYO"
+   39  chmod 600 /etc/nginx/ssl/lab.key
+   40  openssl x509 -in /etc/nginx/ssl/lab.crt -noout -subject -issuer -dates
+   41  cat > /etc/nginx/sites-available/https-lab <<'EOF'
 server {
 listen 443 ssl;
 server_name lab-23230014.local;
@@ -29,10 +59,11 @@ index index.html index.nginx-debian.html;
 }
 EOF
 
-   13  ln -s /etc/nginx/sites-available/https-lab /etc/nginx/sites-enabled/https-lab
-   14  nginx -t
-   15  systemctl reload nginx
-   16  ss -tlpn | grep nginx
-   17  curl -I https://localhost
-   18  curl -kI https://localhost
-   19  history > /root/riwayat-B.txt
+   42  ln -s /etc/nginx/sites-available/https-lab /etc/nginx/sites-enabled/https-lab
+   43  nginx -t
+   44  systemctl reload nginx
+   45  ss -tlpn | grep nginx
+   46  curl -I https://localhost
+   47  curl -kI https://localhost
+   48  history > /root/riwayat-B.txt
+root@ubuntu:~$ 
