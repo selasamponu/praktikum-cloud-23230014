@@ -1,0 +1,55 @@
+root@ubuntu:~$ history > /root/riwayat.txt
+root@ubuntu:~$ cat /root/riwayat.txt
+    1  cat /etc/os-release
+    2  docker version
+    3  apt update
+    4  apt install -y docker.io
+    5  docker version
+    6  docker info | head -20
+    7  docker run hello-world
+    8  docker images
+    9  docker ps
+   10  docker ps -a
+   11  cat /etc/os-release | head -2
+   12  uname -r
+   13  docker run -it --rm alpine sh
+   14  docker run -d --name web -p 8080:80 nginx
+   15  docker ps
+   16  curl -I localhost:8080
+   17  docker exec web sh -c 'echo "<h1>Container Nginx - NIM 23230014</h1>" > /usr/share/nginx/html/index.html'
+   18  curl localhost:8080
+   19  docker exec -it web bash
+   20  docker logs web
+   21  docker logs --tail 5 web
+   22  docker stats --no-stream
+   23  docker inspect web | grep -i ipaddress
+   24  docker stop web
+   25  docker ps
+   26  docker ps -a
+   27  docker start web
+   28  curl localhost:8080
+   29  docker rm -f web
+   30  docker run -d --name web -p 8080:80 nginx
+   31  curl localhost:8080
+   32  docker run -d --name web-alpine -p 8081:80 nginx:alpine
+   33  docker run -d --name web-lama -p 8082:80 nginx:1.26
+   34  docker ps
+   35  docker images
+   36  curl -sI localhost:8081 | grep Server
+   37  curl -sI localhost:8082 | grep Server
+   38  history > /root/riwayat.txt
+root@ubuntu:~$ docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                      PORTS                                     NAMES
+e1d73397c692   nginx:1.26     "/docker-entrypoint.…"   2 minutes ago    Up 2 minutes                0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   web-lama
+63cedc90ecdf   nginx:alpine   "/docker-entrypoint.…"   2 minutes ago    Up 2 minutes                0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   web-alpine
+aba81a6496bd   nginx          "/docker-entrypoint.…"   3 minutes ago    Up 3 minutes                0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   web
+1d8fa5a745ac   hello-world    "/hello"                 17 minutes ago   Exited (0) 17 minutes ago                                             goofy_gauss
+root@ubuntu:~$ docker images
+                                                                i Info →   U  In Use
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest        3ea06e4cb95e       8.43MB             0B        
+hello-world:latest   e2ac70e7319a       10.1kB             0B    U   
+nginx:1.26           64e5ac93d424        192MB             0B    U   
+nginx:alpine         7cac34a4d72b         63MB             0B    U   
+nginx:latest         c05939e13a61        163MB             0B    U   
+root@ubuntu:~$ 
